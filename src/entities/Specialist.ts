@@ -4,8 +4,10 @@ import {
       Column,
       CreateDateColumn,
       UpdateDateColumn,
-      DeleteDateColumn
+      DeleteDateColumn,
+      OneToMany
 } from 'typeorm';
+import { Media } from './Media';
 
 
 console.log('Specialist entity file loaded');
@@ -49,6 +51,10 @@ export class Specialist {
 
       @Column()
       duration_days!: number;
+
+      // 🔥 THIS WAS MISSING
+      @OneToMany(() => Media, (media) => media.specialist)
+      media!: Media[];
 
       @CreateDateColumn()
       created_at!: Date;

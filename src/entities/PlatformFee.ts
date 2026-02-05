@@ -3,14 +3,21 @@ import {
       Column,
       CreateDateColumn,
       UpdateDateColumn,
-      PrimaryGeneratedColumn
+      PrimaryGeneratedColumn,
+      ManyToOne,
+      JoinColumn
 } from 'typeorm';
+import { Specialist } from './Specialist';
 
 
 @Entity("platform_fees")
 export class PlatformFee {
       @PrimaryGeneratedColumn("uuid")
       id!: string;
+
+      @ManyToOne(() => Specialist, { nullable: false })
+      @JoinColumn({ name: "specialist_id" })
+      specialist!: Specialist;
 
       @Column()
       tier_name!: string;
