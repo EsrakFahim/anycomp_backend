@@ -15,7 +15,7 @@ router.post(
 
             await queryRunner.connect();
             await queryRunner.startTransaction();
-
+            console.log("call from route");
             try {
                   const {
                         title,

@@ -17,8 +17,8 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/api", specialistRoutes);
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-      console.error(err.stack);
-      res.status(500).json({ error: "Internal Server Error" });
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error from line 21" });
 });
 
 app.get("/", (_req, res) => {
